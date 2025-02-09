@@ -15,19 +15,21 @@ Original file is located at
 import streamlit as st
 import pandas as pd
 
-uploaded_file = st.file_uploader("Upload hotel_bookings.csv", type=["csv"])
-if uploaded_file is not None:
-    df = pd.read_csv(uploaded_file)
-    st.write("Data loaded successfully!")
-    st.dataframe(df.head())
-else:
-    st.info("Please upload the hotel_bookings.csv file.")
-
+import streamlit as st
 import pandas as pd
+import os
 
-# Adjust the path to match the location of your file in Google Drive.
-file_path = '/content/drive/My Drive/ColabData/hotel_bookings.csv'
-df = pd.read_csv(file_path)
+# Build the relative file path
+file_path = os.path.join("data", "hotel_bookings.csv")
+
+try:
+    df = pd.read_csv(file_path)
+    st.success("Data loaded successfully!")
+    st.dataframe(df.head())
+except FileNotFoundError:
+    st.error(f"File not found at: {file_path}")
+
+
 
 df.head()  # Display the first few rows of the DataFrame
 
