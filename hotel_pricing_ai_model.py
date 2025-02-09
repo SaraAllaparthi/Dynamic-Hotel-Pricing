@@ -12,8 +12,16 @@ Original file is located at
 
 """# 2. Import Libraries and Upload Your Data"""
 
-from google.colab import drive
-drive.mount('/content/drive')
+import streamlit as st
+import pandas as pd
+
+uploaded_file = st.file_uploader("Upload hotel_bookings.csv", type=["csv"])
+if uploaded_file is not None:
+    df = pd.read_csv(uploaded_file)
+    st.write("Data loaded successfully!")
+    st.dataframe(df.head())
+else:
+    st.info("Please upload the hotel_bookings.csv file.")
 
 import pandas as pd
 
