@@ -9,7 +9,6 @@ Original file is located at
 # 1. Install Required Libraries
 """
 
-!pip install prophet pandas matplotlib
 
 """# 2. Import Libraries and Upload Your Data"""
 
