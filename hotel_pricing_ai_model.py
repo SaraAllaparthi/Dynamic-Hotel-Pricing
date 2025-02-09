@@ -12,15 +12,13 @@ Original file is located at
 
 """# 2. Import Libraries and Upload Your Data"""
 
-import streamlit as st
-import pandas as pd
 
 import streamlit as st
 import pandas as pd
 import os
 
-# Build the relative file path
-file_path = os.path.join("data", "hotel_bookings.csv")
+# Construct the file path (assuming hotel_bookings.csv is in the same folder as your app)
+file_path = os.path.join(os.path.dirname(__file__), "hotel_bookings.csv")
 
 try:
     df = pd.read_csv(file_path)
